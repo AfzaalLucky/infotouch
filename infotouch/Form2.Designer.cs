@@ -173,6 +173,7 @@
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Name = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SETTINGS";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
