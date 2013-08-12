@@ -14,6 +14,7 @@ namespace infotouch
         private bool bIsConnected = false;
         private int iMachineNumber = 1;
         public zkemkeeper.CZKEMClass axCZKEM1 = new zkemkeeper.CZKEMClass();
+
         public ZKForm()
         {
             InitializeComponent();
