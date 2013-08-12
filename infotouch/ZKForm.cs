@@ -81,15 +81,15 @@ namespace infotouch
 
             Cursor = Cursors.WaitCursor;
             lvLogs.Items.Clear();
-            axCZKEM1.EnableDevice(iMachineNumber, false);//disable the device
-            if (axCZKEM1.ReadGeneralLogData(iMachineNumber))//read all the attendance records to the memory
+            axCZKEM1.EnableDevice(iMachineNumber, false);
+            if (axCZKEM1.ReadGeneralLogData(iMachineNumber))
             {
                 while (axCZKEM1.SSR_GetGeneralLogData(iMachineNumber, out sdwEnrollNumber, out idwVerifyMode,
-                            out idwInOutMode, out idwYear, out idwMonth, out idwDay, out idwHour, out idwMinute, out idwSecond, ref idwWorkcode))//get records from the memory
+                            out idwInOutMode, out idwYear, out idwMonth, out idwDay, out idwHour, out idwMinute, out idwSecond, ref idwWorkcode))
                 {
                     iGLCount++;
                     lvLogs.Items.Add(iGLCount.ToString());
-                    lvLogs.Items[iIndex].SubItems.Add(sdwEnrollNumber);//modify by Darcy on Nov.26 2009
+                    lvLogs.Items[iIndex].SubItems.Add(sdwEnrollNumber);
                     lvLogs.Items[iIndex].SubItems.Add(idwVerifyMode.ToString());
                     lvLogs.Items[iIndex].SubItems.Add(idwInOutMode.ToString());
                     lvLogs.Items[iIndex].SubItems.Add(idwYear.ToString() + "-" + idwMonth.ToString() + "-" + idwDay.ToString() + " " + idwHour.ToString() + ":" + idwMinute.ToString() + ":" + idwSecond.ToString());
@@ -111,7 +111,7 @@ namespace infotouch
                     MessageBox.Show("No data from terminal returns!", "Error");
                 }
             }
-            axCZKEM1.EnableDevice(iMachineNumber, true);//enable the device
+            axCZKEM1.EnableDevice(iMachineNumber, true);
             Cursor = Cursors.Default;
         }
 
@@ -125,8 +125,8 @@ namespace infotouch
             int idwErrorCode = 0;
             int iValue = 0;
 
-            axCZKEM1.EnableDevice(iMachineNumber, false);//disable the device
-            if (axCZKEM1.GetDeviceStatus(iMachineNumber, 6, ref iValue)) //Here we use the function "GetDeviceStatus" to get the record's count.The parameter "Status" is 6.
+            axCZKEM1.EnableDevice(iMachineNumber, false);
+            if (axCZKEM1.GetDeviceStatus(iMachineNumber, 6, ref iValue))
             {
                 MessageBox.Show("The count of the AttLogs in the device is " + iValue.ToString(), "Success");
             }
@@ -135,7 +135,6 @@ namespace infotouch
                 axCZKEM1.GetLastError(ref idwErrorCode);
                 MessageBox.Show("Operation failed,ErrorCode=" + idwErrorCode.ToString(), "Error");
             }
-            axCZKEM1.EnableDevice(iMachineNumber, true);//enable the device
         }
 
         private void btnClearGLog_Click(object sender, EventArgs e)
@@ -148,10 +147,10 @@ namespace infotouch
             int idwErrorCode = 0;
 
             lvLogs.Items.Clear();
-            axCZKEM1.EnableDevice(iMachineNumber, false);//disable the device
+            axCZKEM1.EnableDevice(iMachineNumber, false);
             if (axCZKEM1.ClearGLog(iMachineNumber))
             {
-                axCZKEM1.RefreshData(iMachineNumber);//the data in the device should be refreshed
+                axCZKEM1.RefreshData(iMachineNumber);
                 MessageBox.Show("All att Logs have been cleared from teiminal!", "Success");
             }
             else
@@ -159,7 +158,7 @@ namespace infotouch
                 axCZKEM1.GetLastError(ref idwErrorCode);
                 MessageBox.Show("Operation failed,ErrorCode=" + idwErrorCode.ToString(), "Error");
             }
-            axCZKEM1.EnableDevice(iMachineNumber, true);//enable the device
+            axCZKEM1.EnableDevice(iMachineNumber, true);
         }
 
         private void btnRsConnect_Click(object sender, EventArgs e)
@@ -170,7 +169,6 @@ namespace infotouch
                 return;
             }
             int idwErrorCode = 0;
-            //accept serialport number from string like "COMi"
             int iPort;
             string sPort = cbPort.Text.Trim();
             for (iPort = 1; iPort < 10; iPort++)
@@ -193,7 +191,7 @@ namespace infotouch
                 return;
             }
 
-            iMachineNumber = Convert.ToInt32(txtMachineSN.Text.Trim());//when you are using the serial port communication,you can distinguish different devices by their serial port number.
+            iMachineNumber = Convert.ToInt32(txtMachineSN.Text.Trim());
             bIsConnected = axCZKEM1.Connect_Com(iPort, iMachineNumber, Convert.ToInt32(cbBaudRate.Text.Trim()));
 
             if (bIsConnected == true)
@@ -202,7 +200,7 @@ namespace infotouch
                 btnRsConnect.Refresh();
                 lblState.Text = "Current State:Connected";
 
-                axCZKEM1.RegEvent(iMachineNumber, 65535);//Here you can register the realtime events that you want to be triggered(the parameters 65535 means registering all)
+                axCZKEM1.RegEvent(iMachineNumber, 65535);
             }
             else
             {

@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttendanceLogs.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -71,6 +72,7 @@
     <Compile Include="ZKForm.Designer.cs">
       <DependentUpon>ZKForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ZKLogs.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
