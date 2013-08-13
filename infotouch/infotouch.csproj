@@ -37,6 +37,10 @@
     <Reference Include="Interop.zkemkeeper">
       <HintPath>..\..\..\..\Desktop\Software Projects\23032011142406zkemsdk_win7 (1)\zkemsdk_cn_Win7\Demo\C# demo\IFace\AttLogs\bin\Release\Interop.zkemkeeper.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="Interop.zkemkeeper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\Desktop\New folder\ASI\Interop.zkemkeeper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -91,6 +95,7 @@
     <EmbeddedResource Include="ZKForm.resx">
       <DependentUpon>ZKForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
